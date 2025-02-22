@@ -70,7 +70,7 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$msg="Vehicle posted successfully";
+ $msg="Vehicle posted successfully";
 }
 else 
 {

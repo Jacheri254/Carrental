@@ -1,0 +1,34 @@
+{
+    "requestId": "c62b-4e23-a479-5f74de8082a11458854",
+    "errorCode": "400.002.02",
+    "errorMessage": "Bad Request - Invalid PhoneNumber"
+}
+{
+    "requestId": "b54f-471d-93d9-f7f3bf3f7c0e2876197",
+    "errorCode": "400.002.02",
+    "errorMessage": "Bad Request - Invalid PhoneNumber"
+}
+{
+    "requestId": "c62b-4e23-a479-5f74de8082a11458884",
+    "errorCode": "400.002.02",
+    "errorMessage": "Bad Request - Invalid CallBackURL"
+}
+{
+    "requestId": "5fe8-4261-87f6-6d7d41adc6c31078314",
+    "errorCode": "400.002.02",
+    "errorMessage": "Bad Request - Invalid CallBackURL"
+}
+{
+    "MerchantRequestID": "bbcd-4a89-bd1a-6ecdc639893b2873022",
+    "CheckoutRequestID": "ws_CO_22022025153716270796046123",
+    "ResponseCode": "0",
+    "ResponseDescription": "Success. Request accepted for processing",
+    "CustomerMessage": "Success. Request accepted for processing"
+}
+{
+    "MerchantRequestID": "b54f-471d-93d9-f7f3bf3f7c0e2876785",
+    "CheckoutRequestID": "ws_CO_22022025153857892795476835",
+    "ResponseCode": "0",
+    "ResponseDescription": "Success. Request accepted for processing",
+    "CustomerMessage": "Success. Request accepted for processing"
+}

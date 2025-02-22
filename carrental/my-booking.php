@@ -188,6 +188,21 @@ foreach($results as $result)
       </div>
     </div>
   </div>
+    <!-- Mpesa Payment Form -->
+    <div style="margin-top: 5px; padding: 10px; background-color: #f8f9fa; margin-left: 60%;  border: 1px solid #ddd; border-radius: 5px;">
+        <div class="mpesa">
+        <img src="assets/images/mpesa.jpg" alt="Mpesa Charges" style=" width:30% ; height: 20%;">
+ 
+    <form method="POST" action="mpesa_payment.php">
+                <input type="hidden" name="amount" value="<?php echo $tds * $ppd; ?>">
+                <input type="hidden" name="booking_number" value="<?php echo htmlentities($result->BookingNumber); ?>">
+                <input type="text" name="phone" placeholder="Enter Mpesa Number" required 
+                       style="width: 50%; padding: 8px; margin-bottom: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                <button type="submit" name="pay" class="btn btn-success" 
+                        style="width: 50%; padding: 10px; font-size: 16px; border-radius: 4px;">
+                    Pay with Mpesa
+                </button>
+            </form>
 </section>
 <!--/my-vehicles--> 
 <?php include('includes/footer.php');?>
