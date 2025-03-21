@@ -43,8 +43,22 @@ error_reporting(0);
 <!-- /Header --> 
 
 <!-- Banners -->
-<section id="banner" class="banner-section">
-  <div class="container">
+<section id="banner" class="banner-section" >
+
+<!--Creating a  text on the background image-->
+<h1 style="color:white; text-align:center; padding-top: 10px; font-size: 8rem; font-weight: bold;" class="animated-text">
+    <span class="from-left">Join</span> 
+    <span class="from-right" style="color: orangered;">us</span> 
+    <span class="from-left">for the best ride with good</span> 
+    <br>
+    <span class="from-right" style="color: orangered;">deals <img src="assets/images/spa.png" alt="" ></span>
+    <br>
+
+    <span class="from-left">and improved customer</span> 
+    <span class="from-right" style="color: orangered;">service</span>
+</h1>
+
+<div class="container">
     <div class="div_zindex">
       <div class="row">
         <div class="col-md-5 col-md-push-7">
@@ -236,6 +250,27 @@ foreach($results as $result)
 <!--Slider-JS--> 
 <script src="assets/js/slick.min.js"></script> 
 <script src="assets/js/owl.carousel.min.js"></script>
+<!--javascript funtionality  for the text decoration on the background image-->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let spans = document.querySelectorAll(".animated-text span");
+        spans.forEach((span, index) => {
+            setTimeout(() => {
+                span.style.opacity = "1";
+                span.classList.add(span.classList.contains("from-left") ? "from-left" : "from-right");
+            }, index * 300);
+        });
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let banner = document.querySelector(".banner-section");
+        setInterval(() => {
+            banner.classList.toggle("animate");
+        }, 6000);
+    });
+</script>
+
 
 </body>
 

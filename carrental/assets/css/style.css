@@ -767,6 +767,7 @@ table thead th, table thead td {
   background: #fff none repeat scroll 0 0;
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   padding: 30px 0;
+  max-height: 16vh;
   transition-duration:0.3s;
    -moz-transition-duration:0.3s;
     -o-transition-duration:0.3s;
@@ -1064,13 +1065,78 @@ nav.navbar {
 	3.1. Banner
 -------------------------------*/
 .banner-section {
-  background-image: url("../images/banner-image.jpg");
+  background-image: url("../images/banner-image2.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 160px 0;
   position: relative;
+  max-height: 75vh;
+  transition: background-image 1.5s ease-in-out;
 }
+
+@keyframes backgroundChange {
+  0% {
+      background-image: url("../images/banner-image2.jpg");
+  }
+  50% {
+      background-image: url("../images/pexels-mikebirdy-120049.jpg");
+  }
+  100% {
+      background-image: url("../images/banner-image2.jpg");
+  }
+}
+
+.banner-section.animate {
+  animation: backgroundChange 6s infinite alternate;
+}
+
+
+    .animated-text {
+        font-size: 8rem;
+        font-weight: bold;
+    }
+
+    .animated-text span {
+        display: inline-block;
+        opacity: 0;
+        position: relative;
+        font-size: 8rem;
+        font-weight: bold;
+    }
+
+    .from-left {
+        animation: moveLeft 1.5s ease-out forwards;
+    }
+
+    @keyframes moveLeft {
+        from {
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .from-right {
+        animation: moveRight 1.5s ease-out forwards;
+    }
+
+    @keyframes moveRight {
+        from {
+            transform: translateX(100vw);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+
+
 .banner-section::after {
   background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
   bottom: 0;
@@ -4058,11 +4124,11 @@ table.info-tabel tr td {
   text-align: center;
   top: 50%;
   width: 32px;
-  transform:translateY(-50%)
+  transform:translateY(-50%);
    -moz-transform:translateY(-50%);
     -o-transform:translateY(-50%);
      -webkit-transform:translateY(-50%);
-     -md-transform:translateY(-50%)
+     -md-transform:translateY(-50%);
 } 
 .td_divider {
   display: block;

@@ -345,28 +345,47 @@ $_SESSION['brndid']=$result->bid;
           <div class="widget_heading">
             <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
           </div>
-          <form method="post">
-            <div class="form-group">
-              <label>From Date:</label>
-              <input type="date" class="form-control" name="fromdate" placeholder="From Date" required>
-            </div>
-            <div class="form-group">
-              <label>To Date:</label>
-              <input type="date" class="form-control" name="todate" placeholder="To Date" required>
-            </div>
-            <div class="form-group">
-              <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
-            </div>
-          <?php if($_SESSION['login'])
-              {?>
-              <div class="form-group">
-                <input type="submit" class="btn"  name="submit" value="Book Now">
-              </div>
-              <?php } else { ?>
-<a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For Book</a>
+          <form method="post" onsubmit="return checkTerms()">
+    <div class="form-group">
+        <label>From Date:</label>
+        <input type="date" class="form-control" name="fromdate" placeholder="From Date" required>
+    </div>
+    <div class="form-group">
+        <label>To Date:</label>
+        <input type="date" class="form-control" name="todate" placeholder="To Date" required>
+    </div>
+    <div class="form-group">
+        <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
+    </div>
 
-              <?php } ?>
-          </form>
+    <!-- Terms and Conditions Checkbox -->
+    <div class="form-group">
+        <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+        <label for="acceptTerms">
+            I accept the <a href="http://localhost/CarRental/carrental/page.php?type=terms" target="_blank">Terms and Conditions</a>
+        </label>
+    </div>
+
+    <?php if ($_SESSION['login']) { ?>
+        <div class="form-group">
+            <input type="submit" class="btn" name="submit" value="Book Now">
+        </div>
+    <?php } else { ?>
+        <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login For Book</a>
+    <?php } ?>
+</form>
+
+<!-- JavaScript to Ensure Terms are Accepted -->
+<script>
+function checkTerms() {
+    if (!document.getElementById("acceptTerms").checked) {
+        alert("You must accept the Terms and Conditions before booking.");
+        return false;
+    }
+    return true;
+}
+</script>
+
         </div>
       </aside>
       <!--/Side-Bar--> 

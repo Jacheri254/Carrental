@@ -197,12 +197,40 @@ $testimonials=$query5->rowCount();
 											</div>
 											<a href="testimonials.php" class="block-anchor panel-footer text-center">Full Detail &nbsp; <i class="fa fa-arrow-right"></i></a>
 										</div>
+									
 									</div>
-								
+									<?php
+include('../includes/config.php'); // Ensure the path is correct
+
+// Fetch the total number of payments
+$query = $dbh->prepare("SELECT COUNT(*) AS total_payments FROM payments");
+$query->execute();
+$result = $query->fetch(PDO::FETCH_ASSOC);
+$totalPayments = $result['total_payments'];
+?>
+
+<div class="col-md-3"> <!-- Keep the same width -->
+    <div class="panel" style="background-color:rgb(243, 131, 25); border-radius: 5px; color: white; "> 
+        <div class="panel-body" style="text-align: center; padding: 15px;">
+            <h3 style="margin: 0; font-size: 35px; margin-top: 4px; font-weight: 480; padding-top: 15px;"><?php echo $totalPayments; ?></h3>
+            <p style="margin: 12px 0 0; font-size: 14px; ">PAYMENTS</p>
+        </div>
+        <div class="panel-footer" style="background-color: #f8f9fa; text-align: center; padding: 10px; border-top: 1px solid #ddd; margin-top: px">
+            <a href="manage_payments.php" style="color:rgb(119, 121, 124); text-decoration: none;">
+                FULL DETAIL <i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
 								</div>
 							</div>
 						</div>
 					</div>
+					
+
+
 				</div>
 
 
@@ -216,7 +244,7 @@ $testimonials=$query5->rowCount();
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- Loading Scripts -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap-select.min.js"></script>
