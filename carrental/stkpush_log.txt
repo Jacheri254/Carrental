@@ -67,3 +67,10 @@
     "ResponseDescription": "Success. Request accepted for processing",
     "CustomerMessage": "Success. Request accepted for processing"
 }
+{
+    "MerchantRequestID": "b54f-471d-93d9-f7f3bf3f7c0e3596936",
+    "CheckoutRequestID": "ws_CO_24032025113734687748016913",
+    "ResponseCode": "0",
+    "ResponseDescription": "Success. Request accepted for processing",
+    "CustomerMessage": "Success. Request accepted for processing"
+}

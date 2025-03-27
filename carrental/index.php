@@ -11,6 +11,9 @@ error_reporting(0);
 
 <title>Car Rental Portal</title>
 <!--Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet" href="assets/css/style.css" type="text/css">
 <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
@@ -41,6 +44,8 @@ error_reporting(0);
 <!--Header-->
 <?php include('includes/header.php');?>
 <!-- /Header --> 
+
+
 
 <!-- Banners -->
 <section id="banner" class="banner-section" >

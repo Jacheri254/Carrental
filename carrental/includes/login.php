@@ -1,35 +1,47 @@
-<?php
+<?php 
+session_start();
+include('config.php'); // Ensure database connection is included
+
 if(isset($_POST['login']))
 {
-$email=$_POST['email'];
-$password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,FullName FROM tblusers WHERE EmailId=:email and Password=:password";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-$query-> execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-if($query->rowCount() > 0)
-{
-$_SESSION['login']=$_POST['email'];
-$_SESSION['fname']=$results->FullName;
-$currentpage=$_SERVER['REQUEST_URI'];
-echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
-} else{
-  
-  echo "<script>alert('Invalid Details');</script>";
+    $email = $_POST['email'];
+    $mobile = $_POST['mobileno']; // Capture phone number input
+    $password = md5($_POST['password']);
 
+    // Query to check if all inputs match a user in the database
+    $sql ="SELECT EmailId, Password, FullName, ContactNo FROM tblusers 
+           WHERE EmailId=:email AND ContactNo=:mobile AND Password=:password";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':mobile', $mobile, PDO::PARAM_STR);
+    $query->bindParam(':password', $password, PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetch(PDO::FETCH_OBJ); // Fetching a single result
+
+    if($results) // If user is found
+    {
+        $_SESSION['login'] = $email;
+        $_SESSION['fname'] = $results->FullName;
+        $_SESSION['mobile'] = $results->ContactNo;
+
+        echo "<script>alert('Login Successful!');</script>";
+        echo "<script type='text/javascript'> document.location = 'index.php'; </script>"; // Redirect to dashboard or homepage
+    } 
+    else
+    {
+        echo "<script>alert('Invalid Email, Phone, or Password. Please try again.');</script>";
+    }
 }
-
-}
-
 ?>
 
+<!-- Login Form -->
 <div class="modal fade" id="loginform">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
         <h3 class="modal-title">Login</h3>
       </div>
       <div class="modal-body">
@@ -38,28 +50,31 @@ echo "<script type='text/javascript'> document.location = '$currentpage'; </scri
             <div class="col-md-12 col-sm-6">
               <form method="post">
                 <div class="form-group">
-                  <input type="email" class="form-control" name="email" placeholder="Email address*">
+                  <input type="email" class="form-control" name="email" placeholder="Email Address*" required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" name="password" placeholder="Password*">
+                  <input type="text" class="form-control" name="mobileno" placeholder="Mobile Number*" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password*" required>
                 </div>
                 <div class="form-group checkbox">
                   <input type="checkbox" id="remember">
-               
+                  <label for="remember">Remember me</label>
                 </div>
                 <div class="form-group">
                   <input type="submit" name="login" value="Login" class="btn btn-block">
                 </div>
               </form>
             </div>
-           
           </div>
         </div>
       </div>
       <div class="modal-footer text-center">
         <p>Don't have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup Here</a></p>
-        <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">Forgot Password ?</a></p>
+        <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">Forgot Password?</a></p>
       </div>
     </div>
   </div>
 </div>
+

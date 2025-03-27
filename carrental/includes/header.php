@@ -1,4 +1,3 @@
-
 <header>
   <div class="default-header">
     <div class="container">
@@ -30,15 +29,22 @@ $contactno=$result->ContactNo;
             <div class="social-follow">
             
             </div>
-   <?php   if(strlen($_SESSION['login'])==0)
+            <?php   if(strlen($_SESSION['login'])==0)
 	{	
 ?>
- <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login / Register</a> </div>
+ <div class="login_btn"><a href="#" class="btn btn-xs uppercase" id="loginButton">Login / Register</a>
+
+<script>
+  document.getElementById("loginButton").addEventListener("click", function() {
+      $('#loginform').modal('show');
+  });
+</script> </div>
 <?php }
 else{ 
 
 echo "Welcome To Car rental portal";
  } ?>
+</div>
           </div>
         </div>
       </div>
@@ -104,5 +110,3 @@ foreach($results as $result)
     </div>
   </nav>
   <!-- Navigation end --> 
-  
-</header>
